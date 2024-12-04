@@ -11,14 +11,15 @@ import { faHeadphones } from "@fortawesome/free-solid-svg-icons";
 
 import icon01 from "../../assets/images/icons 01.jpg";
 import icon02 from "../../assets/images/icons 02.jpg";
+import FindHotel from "./FindHotel";
 
-function CheckAvailibility() {
+function HeroSection() {
   return (
-    <div className="">
-      <div className=" flex justify-between rounded-xl flex-wrap ">
-        <div className="px-10 pt-20 flex-1 bg-[#FEFEFE]">
+    <div className=" relative mb-16">
+      <div className=" flex relative justify-between rounded-xl lg:flex-row flex-col">
+        <div className="lg:px-10 xl:pt-15 flex-1 lg:pt-0 bg-[#FEFEFE]">
           <div className="mb-4">
-            <span className="text-[3.5rem] font-extrabold block mb-4">
+            <span className="lg:text-[3.5rem] text-[2.3rem] font-extrabold block mb-4">
               Find the top Hotels nearby
             </span>
             <span className="text-gray-500 ">
@@ -44,20 +45,19 @@ function CheckAvailibility() {
             </div>
           </div>
         </div>
-        <div className="rounded-xl overflow-visible flex-1 relative">
-          <div className="relative overflow-hidden rounded-xl">
+        <div className="rounded-xl flex-1 relative">
+          <div className="relative h-[500px] w-full">
+            {/* Added fixed height */}
             <Image
               src={PosterImage}
               alt="Hotel Image"
-              width={600}
-              height={600}
-              layout="intrinsic"
-              className=" max-w-full h-auto"
-              style={{ objectFit: "cover" }}
+              className="rounded-xl object-cover h-full w-full"
+              priority
+              fill
             />
           </div>
 
-          <div className="bg-white absolute top-[-1.5rem] right-[-1.5rem] px-4 py-2 rounded-md w-40 bg-opacity-65 text-center flex flex-col items-center justify-center shadow-2xl z-10">
+          <div className="bg-white absolute top-[-1rem] right-[-1rem] px-4 py-2 rounded-md w-40 bg-opacity-65 text-center flex flex-col items-center justify-center shadow-2xl z-5">
             <FontAwesomeIcon
               icon={faHeadphones}
               style={{ fontSize: 30 }}
@@ -66,13 +66,11 @@ function CheckAvailibility() {
             <span className="font-bold text-lg">24/7</span>
             <span className="font-bold text-lg">Guide supports</span>
           </div>
-          <div className="absolute top-8 flex flex-col gap-6 left-[-2.5rem] items-center">
-            <div className="w-[50px] h-[50px] rounded-full overflow-hidden border-4 border-white ">
+          <div className="absolute top-8 lg:flex flex-col gap-6 left-[-2.5rem] items-center hidden">
+            <div className="w-[50] h-[50] rounded-full overflow-hidden border-4 border-white ">
               <Image
                 src={icon01}
                 alt="icon"
-                width={50}
-                height={50}
                 className="object-cover w-full h-full "
               />
             </div>
@@ -80,17 +78,16 @@ function CheckAvailibility() {
               <Image
                 src={icon02}
                 alt="icon"
-                width={80}
-                height={80}
                 className="object-cover w-full h-full"
               />
             </div>
           </div>
         </div>
       </div>
-      {/* Check Availibility card */}
+
+      <FindHotel />
     </div>
   );
 }
 
-export default CheckAvailibility;
+export default HeroSection;

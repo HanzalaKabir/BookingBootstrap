@@ -42,7 +42,7 @@ export function BookingNavigation() {
   ];
 
   return (
-    <NavigationMenu className="">
+    <NavigationMenu className="hidden 2xl:flex">
       <NavigationMenuList>
         {navItems.map((item) => (
           <NavigationMenuItem key={item.label}>
@@ -58,7 +58,7 @@ export function BookingNavigation() {
             flex items-center
           `}
             >
-              <FontAwesomeIcon icon={item.icon} className="mr-2" />
+              <FontAwesomeIcon icon={item.icon} className="mr-1" />
               <span className="text-lg">{item.label}</span>
             </Link>
           </NavigationMenuItem>
@@ -66,25 +66,27 @@ export function BookingNavigation() {
         <NavigationMenuItem>
           <Link href={"#"}>
             <span className="inline-block">
-              {" "}
               <FontAwesomeIcon
                 icon={faBell}
-                className="mr-2 rounded-sm  p-2 bg-gray-200"
+                className="mr-1 rounded-sm  p-2 bg-gray-200"
                 size="lg"
               />
             </span>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href={"#"}>
-            <Image
-              className="rounded"
-              src={profilePicture}
-              alt="profile picture"
-              width={40}
-              height={40}
-            />
-          </Link>
+          <div className="w-[40] h-[40]">
+            <Link href={"#"}>
+              <Image
+                className="rounded"
+                src={profilePicture}
+                alt="profile picture"
+                layout="responsive"
+                width={40}
+                height={40}
+              />
+            </Link>
+          </div>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>

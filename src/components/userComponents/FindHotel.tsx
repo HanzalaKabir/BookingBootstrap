@@ -1,120 +1,90 @@
 "use client";
 import React from "react";
-import "react-datepicker/dist/react-datepicker.css";
-
-import { Button } from "../ui/button";
-
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { SearchIcon } from "lucide-react";
-
-import { addDays, format } from "date-fns";
-import { Calendar as CalendarIcon } from "lucide-react";
-import { DateRange } from "react-day-picker";
-
-import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-
-import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu";
-
-type Checked = DropdownMenuCheckboxItemProps["checked"];
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuCheckboxItem,
+} from "@/components/ui/dropdown-menu";
+import { addDays, format } from "date-fns";
+import { Calendar as CalendarIcon, Search, MapPin, User } from "lucide-react";
+import { DateRange } from "react-day-picker";
+import { cn } from "@/lib/utils";
+import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 
 function FindHotel() {
-  const [showStatusBar, setShowStatusBar] = React.useState<Checked>(true);
-  const [showActivityBar, setShowActivityBar] = React.useState<Checked>(false);
-  const [showPanel, setShowPanel] = React.useState<Checked>(false);
-
   const [date, setDate] = React.useState<DateRange | undefined>({
     from: new Date(2022, 0, 20),
     to: addDays(new Date(2022, 0, 20), 20),
   });
 
   return (
-    <div className="rounded ">
-      <div>
-        <span className="font-bold text-lg">Check Availibility </span>
-      </div>
-      <div className="flex flex-row p-8  shadow-2xl shadow-gray-300 rounded-lg relative bg-white flex-wrap">
-        <div className="flex">
-          <LocationOnIcon fontSize="large" />
-          <DropdownMenu>
-            <span className=" text-gray-600 absolute left-24 top-5 bg-white">
-              Location
-            </span>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="outline"
-                className="py-6 px-10 rounded-lg mx-4  text-md"
-              >
-                Select Location
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56">
-              <DropdownMenuLabel>Appearance</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuCheckboxItem
-                checked={showStatusBar}
-                onCheckedChange={setShowStatusBar}
-              >
-                Status Bar
-              </DropdownMenuCheckboxItem>
-              <DropdownMenuCheckboxItem
-                checked={showActivityBar}
-                onCheckedChange={setShowActivityBar}
-                disabled
-              >
-                Activity Bar
-              </DropdownMenuCheckboxItem>
-              <DropdownMenuCheckboxItem
-                checked={showPanel}
-                onCheckedChange={setShowPanel}
-              >
-                Panel
-              </DropdownMenuCheckboxItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
-        <div className="flex mr-2">
-          <CalendarIcon size={35} className="mr-5" />
-          <div className="relative">
-            <span className=" text-gray-600 absolute  bg-white left-3 top-[-0.7rem] z-10">
-              Dates
-            </span>
-            <div className="grid gap-2 ">
+    <div className="relative w-full -mt-24">
+      <div className="container mx-auto px-4">
+        <h2 className="text-xl font-semibold mb-4 hidden lg:block">
+          Check Availability
+        </h2>
+        <div className="bg-white rounded-xl shadow-lg p-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-start">
+            {/* Location input */}
+            <div className="relative">
+              <label className="absolute -top-2 left-2 bg-white px-1 text-sm text-gray-600">
+                Location
+              </label>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className="w-full h-12 justify-start gap-2"
+                  >
+                    <MapPin className="h-5 w-5" />
+                    Select location
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56">
+                  <DropdownMenuLabel>Popular locations</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuCheckboxItem>New York</DropdownMenuCheckboxItem>
+                  <DropdownMenuCheckboxItem>London</DropdownMenuCheckboxItem>
+                  <DropdownMenuCheckboxItem>Paris</DropdownMenuCheckboxItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+
+            {/* Calendar input */}
+            <div className="relative">
+              <label className="absolute -top-2 left-2 bg-white px-1 text-sm text-gray-600">
+                Check in - out
+              </label>
               <Popover>
                 <PopoverTrigger asChild>
                   <Button
-                    id="date"
-                    variant={"outline"}
+                    variant="outline"
                     className={cn(
-                      "w-[17rem] justify-start text-left font-normal py-6 px-8 text-md",
+                      "w-full h-12 justify-start gap-2",
                       !date && "text-muted-foreground"
                     )}
                   >
+                    <CalendarIcon className="h-5 w-5" />
                     {date?.from ? (
                       date.to ? (
                         <>
-                          {format(date.from, "LLL dd, y")} -{" "}
-                          {format(date.to, "LLL dd, y")}
+                          {format(date.from, "LLL dd")} -{" "}
+                          {format(date.to, "LLL dd")}
                         </>
                       ) : (
-                        format(date.from, "LLL dd, y")
+                        format(date.from, "LLL dd")
                       )
                     ) : (
-                      <span>Pick a date</span>
+                      "Select dates"
                     )}
                   </Button>
                 </PopoverTrigger>
@@ -130,27 +100,26 @@ function FindHotel() {
                 </PopoverContent>
               </Popover>
             </div>
-          </div>
-        </div>
-        <div className="flex">
-          <PersonOutlineOutlinedIcon fontSize="large" className="mr-2" />
-          <div className="relative">
-            <span className=" text-gray-600 absolute  bg-white left-3 top-[-0.7rem] z-10">
-              Guests & Rooms
-            </span>
-            <Button
-              id="guests"
-              variant={"outline"}
-              className={cn("w-[13rem] justify-star font-normal py-6 text-md ")}
-            >
-              3 Guests 1 Room
-            </Button>
-          </div>
-        </div>
 
-        <Button className="relative left-[3.8rem] bg-purple-800 rounded-full text-white w-15 h-15 ">
-          <SearchIcon />
-        </Button>
+            {/* Guests input */}
+            <div className="relative">
+              <label className="absolute -top-2 left-2 bg-white px-1 text-sm text-gray-600">
+                Guests & rooms
+              </label>
+              <div className="flex gap-2">
+                <Button
+                  variant="outline"
+                  className="flex-1 h-12 justify-start gap-2"
+                >
+                  <User className="h-5 w-5" />2 Guests, 1 Room
+                </Button>
+                <Button className="bg-purple-600 hover:bg-purple-700 h-12 w-12 p-0 rounded-full flex-shrink-0">
+                  <Search className="h-5 w-5" />
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
