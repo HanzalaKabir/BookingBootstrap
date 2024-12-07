@@ -22,7 +22,7 @@ const Features = () => {
             className="h-full w-full object-cover  rounded-2xl"
           />
         </div>
-        <div className="absolute right-[-5rem]  bottom-[-2.5rem] lg:right-[-2.5rem] -z-10 hidden md:block ">
+        <div className="absolute right-[-1rem]  bottom-[-2.5rem] lg:right-[-2.5rem] -z-10 hidden md:block ">
           <DottedLines className="fill-blue-200" />
         </div>
       </div>

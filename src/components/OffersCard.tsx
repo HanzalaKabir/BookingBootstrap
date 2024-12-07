@@ -6,9 +6,9 @@ type CardProps = {
   content: string;
 };
 
-const CarouselCard = ({ src, tagline, content }: CardProps) => {
+const OffersCard = ({ src, tagline, content }: CardProps) => {
   return (
-    <div className="flex border-2 border-gray-200 rounded-lg mx-6 ">
+    <div className="flex  rounded-lg shadow-xl ">
       <div className="relative w-1/2 h-[125]">
         <Image
           src={src}
@@ -22,10 +22,10 @@ const CarouselCard = ({ src, tagline, content }: CardProps) => {
       </div>
       <div className="flex flex-col p-4 w-1/2 items-center justify-center">
         <span className="text-lg font-semibold mb-2">{tagline}</span>
-        <span>{content}</span>
+        <span className="text-center">{content}</span>
       </div>
     </div>
   );
 };
 
-export default CarouselCard;
+export default OffersCard;

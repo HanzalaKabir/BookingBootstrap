@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -21,7 +21,7 @@ import { cn } from "@/lib/utils";
 import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 
 function FindHotel() {
-  const [date, setDate] = React.useState<DateRange | undefined>({
+  const [date, setDate] = useState<DateRange | undefined>({
     from: new Date(2022, 0, 20),
     to: addDays(new Date(2022, 0, 20), 20),
   });

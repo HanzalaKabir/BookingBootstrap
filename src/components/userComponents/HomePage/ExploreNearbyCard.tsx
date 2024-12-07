@@ -8,7 +8,7 @@ type cardProp = {
 
 const ExploreNearbyCard = ({ src, location, driveTime }: cardProp) => {
   return (
-    <div className=" mx-14 max-sm:mx-2 mb-8 ">
+    <div className=" mx-14 max-sm:mx-0 mb-8 ">
       <div className="relative w-32 h-32 rounded-full mb-2 ">
         <Image
           src={src}

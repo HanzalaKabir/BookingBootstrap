@@ -70,7 +70,7 @@ const ExploreNearby = () => {
       <h1 className="font-extrabold text-3xl text-center mb-10">
         Explore Nearby
       </h1>
-      <div className="flex flex-wrap justify-center ">
+      <div className="flex flex-wrap justify-around ">
         {NearbyCities.map((city, index) => (
           <ExploreNearbyCard
             key={index}

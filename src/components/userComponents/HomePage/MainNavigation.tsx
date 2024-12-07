@@ -6,7 +6,7 @@ import {
   NavigationMenuItem,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import WebsiteLogo from "../../assets/images/brand_logo.png";
+import WebsiteLogo from "../../../assets/images/brand_logo.png";
 import Image from "next/image";
 
 export function MainNavigation() {

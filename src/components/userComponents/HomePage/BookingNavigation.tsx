@@ -14,7 +14,7 @@ import { faCar, faGlobe, faHome } from "@fortawesome/free-solid-svg-icons";
 import { faPlaneDeparture } from "@fortawesome/free-solid-svg-icons";
 import { faBell } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
-import profilePicture from "../../assets/images/user_profile.jpg";
+import profilePicture from "../../../assets/images/user_profile.jpg";
 
 export function BookingNavigation() {
   const pathname = usePathname();
@@ -42,7 +42,7 @@ export function BookingNavigation() {
   ];
 
   return (
-    <NavigationMenu className="hidden 2xl:flex">
+    <NavigationMenu className="hidden lg:flex">
       <NavigationMenuList>
         {navItems.map((item) => (
           <NavigationMenuItem key={item.label}>

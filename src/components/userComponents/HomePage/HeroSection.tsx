@@ -1,16 +1,15 @@
 "use client";
 
-import * as React from "react";
 import Image from "next/image";
-import PosterImage from "../../assets/images/06.jpg";
-import { Button } from "../ui/button";
-import VideoPlayerLogo from "../../assets/images/video_player.jpg";
+import PosterImage from "@/assets/images/06.jpg";
+import { Button } from "../../ui/button";
+import VideoPlayerLogo from "@/assets/images/video_player.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { faHeadphones } from "@fortawesome/free-solid-svg-icons";
 
-import icon01 from "../../assets/images/icons 01.jpg";
-import icon02 from "../../assets/images/icons 02.jpg";
+import icon01 from "@/assets/images/icons 01.jpg";
+import icon02 from "@/assets/images/icons 02.jpg";
 import FindHotel from "./FindHotel";
 
 function HeroSection() {

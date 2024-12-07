@@ -1,6 +1,6 @@
 "use client";
 import { useRef } from "react";
-import CarouselCard from "./CarouselCard";
+import OffersCard from "../../OffersCard";
 import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel as ShadCarousel,
@@ -35,6 +35,11 @@ const offers = [
     tagline: "70% Discount",
     content: "Grab Now",
   },
+  {
+    src: promoImage1,
+    tagline: "80% Discount",
+    content: "Grab Now",
+  },
 ];
 
 const Carousel = () => {
@@ -48,25 +53,28 @@ const Carousel = () => {
         onMouseEnter={plugin.current.stop}
         onMouseLeave={plugin.current.reset}
         opts={{
-          align: "start",
+          align: "center",
           slidesToScroll: 1,
           loop: true,
         }}
       >
-        <CarouselContent className="-ml-1">
+        <CarouselContent className="px-4 py-4 ">
           {offers.map((offer, index) => (
             <CarouselItem
               key={index}
-              className="pl-1 basis-full md:basis-1/2 lg:basis-1/3"
+              className="basis-full md:basis-1/2 lg:basis-1/3 "
             >
-              <CarouselCard
-                src={offer.src}
-                tagline={offer.tagline}
-                content={offer.content}
-              />
+              <div className="border border-gray-300 rounded-lg">
+                <OffersCard
+                  src={offer.src}
+                  tagline={offer.tagline}
+                  content={offer.content}
+                />
+              </div>
             </CarouselItem>
           ))}
         </CarouselContent>
+
         <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <CarouselPrevious />
           <CarouselNext />

@@ -1,6 +1,6 @@
 "use client";
 
-import { NavigationMenuDemo } from "@/components/userComponents/NavigationBar";
+import { NavigationMenuDemo } from "@/components/userComponents/HomePage/NavigationBar";
 
 const page = () => {
   return (

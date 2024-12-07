@@ -1,6 +1,7 @@
+"use client";
 import { Star } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
-import React from "react";
+import { useRouter } from "next/navigation";
 
 type HotelDetails = {
   src: StaticImageData;
@@ -17,8 +18,17 @@ const FeaturedHotelCard = ({
   price,
   rating,
 }: HotelDetails) => {
+  const router = useRouter();
+
+  const handleFeaturedHotelCardClick = () => {
+    router.push("/HotelDetails");
+  };
+
   return (
-    <div className="flex flex-col rounded-2xl   max-md:justify-center mb-8">
+    <div
+      className="flex flex-col rounded-2xl   max-md:justify-center mb-8"
+      onClick={handleFeaturedHotelCardClick}
+    >
       <div className="sm:w-[300px] md:w-[320px] lg:w-[225px] ">
         <div className="relative overflow-hidden rounded-3xl">
           <div className="relative h-[400px] w-full transform transition-transform duration-500 hover:scale-110">
@@ -35,10 +45,10 @@ const FeaturedHotelCard = ({
           <h1 className="font-extrabold text-lg">{hotelName}</h1>
           <div className="flex justify-between text-green-600 font-semibold ">
             <p>${price}/starting at</p>
-            <p className="flex">
+            <div className="flex">
               {rating}
               <Star className="text-yellow-500" />
-            </p>
+            </div>
           </div>
         </div>
       </div>
